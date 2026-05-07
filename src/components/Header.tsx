@@ -18,8 +18,8 @@ export function Header({ lang, onSetLang, theme, onSetTheme }: HeaderProps) {
         className="flex items-center space-x-3 cursor-pointer"
         onClick={() => window.location.reload()}
       >
-        <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
-          <span className="text-white font-bold text-xl">iX</span>
+        <div className="px-3 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
+          <span className="text-white font-black text-lg tracking-tighter">IDEAX</span>
         </div>
         <div className="hidden sm:block">
           <h1 className="text-xl font-bold tracking-tight text-slate-800">Ideax Pro</h1>

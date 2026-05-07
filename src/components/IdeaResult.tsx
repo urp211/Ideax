@@ -2,10 +2,11 @@ import { motion } from "motion/react";
 import { BusinessIdea } from "@/services/geminiService";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, TrendingUp, Users, Wallet, Target, Info } from "lucide-react";
+import { FileText, Download, TrendingUp, Users, Wallet, Target, Info, Share2, Copy, Check } from "lucide-react";
 import { Language, translations } from "@/lib/translations";
 import { jsPDF } from "jspdf";
 import { saveAs } from "file-saver";
+import { useState } from "react";
 
 interface IdeaResultProps {
   ideas: BusinessIdea[];
@@ -14,6 +15,32 @@ interface IdeaResultProps {
 
 export function IdeaResult({ ideas, lang }: IdeaResultProps) {
   const t = translations[lang];
+  const [copiedId, setCopiedId] = useState<number | null>(null);
+
+  const handleShare = async (idea: BusinessIdea, index: number) => {
+    const shareData = {
+      title: `Ideax Pro: ${idea.nome}`,
+      text: `${idea.nome}\n\n${idea.descricao}\n\nConfira esta ideia de negócio no Ideax Pro:`,
+      url: window.location.href,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      // Fallback: Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+        setCopiedId(index);
+        setTimeout(() => setCopiedId(null), 2000);
+      } catch (err) {
+        console.error("Failed to copy:", err);
+      }
+    }
+  };
 
   const exportToPDF = (idea: BusinessIdea) => {
     const doc = new jsPDF();
@@ -163,6 +190,18 @@ export function IdeaResult({ ideas, lang }: IdeaResultProps) {
                 </Button>
                 <Button onClick={() => exportToDoc(idea)} variant="outline">
                   <FileText className="w-4 h-4 mr-2" /> {t.buttons.downloadDoc}
+                </Button>
+                <Button 
+                  onClick={() => handleShare(idea, index)} 
+                  variant="ghost" 
+                  className="text-slate-500 hover:text-indigo-600 hover:bg-indigo-50"
+                >
+                  {copiedId === index ? (
+                    <Check className="w-4 h-4 mr-2 text-green-600" />
+                  ) : (
+                    <Share2 className="w-4 h-4 mr-2" />
+                  )}
+                  {copiedId === index ? "Copiado!" : "Compartilhar"}
                 </Button>
               </div>
             </div>
