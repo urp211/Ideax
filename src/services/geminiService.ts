@@ -22,6 +22,13 @@ export interface BusinessIdea {
     platform: string;
     tip: string;
   }[];
+  estatisticasSucesso: {
+    taxaSucessoEstimada: string;
+    pilaresPrincipais: string[];
+    riscosPotenciais: string[];
+    proximaAcaoImediata: string;
+    estimativaCrescimento: string;
+  };
 }
 
 export interface UserContext {
@@ -42,7 +49,9 @@ export async function generateBusinessIdeas(context: UserContext): Promise<Busin
 - Nível de Detalhe Desejado: ${context.nivelDetalhe}
 - Idioma da Resposta: ${context.idioma}
 
-Para o nível "${context.nivelDetalhe}", forneça conteúdo extremamente rico. Se for "Extenso", inclua análises profundas de mercado, operações detalhadas e projeções financeiras em cada ideia. O objetivo é que cada ideia pareça um mini plano de negócios de várias páginas.
+Para o nível "${context.nivelDetalhe}", forneça conteúdo extremamente rico. Se for "Extenso", inclua análises profundas de mercado, operações detalhadas e projeções financeiras em cada ideia. 
+
+Além disso, inclua uma seção de "Estatísticas de Sucesso" para cada ideia, detalhando a probabilidade de sucesso, os pilares fundamentais, riscos e um plano de ação imediato.
 
 As ideias devem ser práticas, detalhadas e adaptadas ao contexto. Priorize ideias que funcionem com pouco dinheiro e possam ser feitas com celular. 
 
@@ -91,6 +100,23 @@ IMPORTANTE: Responda TODO o conteúdo no idioma: ${context.idioma}.`;
                   tip: { type: Type.STRING }
                 }
               }
+            },
+            estatisticasSucesso: {
+              type: Type.OBJECT,
+              properties: {
+                taxaSucessoEstimada: { type: Type.STRING },
+                pilaresPrincipais: {
+                  type: Type.ARRAY,
+                  items: { type: Type.STRING }
+                },
+                riscosPotenciais: {
+                  type: Type.ARRAY,
+                  items: { type: Type.STRING }
+                },
+                proximaAcaoImediata: { type: Type.STRING },
+                estimativaCrescimento: { type: Type.STRING }
+              },
+              required: ["taxaSucessoEstimada", "pilaresPrincipais", "riscosPotenciais", "proximaAcaoImediata", "estimativaCrescimento"]
             }
           },
           required: [
@@ -103,7 +129,8 @@ IMPORTANTE: Responda TODO o conteúdo no idioma: ${context.idioma}.`;
             "tempoParaResultados", 
             "dicaPratica",
             "detalhesExtensos",
-            "socialMediaTips"
+            "socialMediaTips",
+            "estatisticasSucesso"
           ]
         }
       }

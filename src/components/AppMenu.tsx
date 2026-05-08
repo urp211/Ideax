@@ -8,7 +8,7 @@ import {
   SheetTrigger 
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Info, Settings, Zap, Moon, Sun, User, Github } from "lucide-react";
+import { Menu, Info, Settings, Zap, Moon, Sun, User, Github, Check } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
@@ -50,25 +50,19 @@ export function AppMenu({ lang, currentTheme, onThemeChange }: AppMenuProps) {
           {/* Plano Section */}
           <section className="space-y-4">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{t.plano.title}</h4>
-            <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold text-slate-700">{t.plano.actual}</span>
-                <Badge variant="outline" className="bg-white text-slate-500 font-bold">FREE</Badge>
+            <div className="bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-xs font-bold text-indigo-600">{t.plano.actual}</span>
+                <span className="px-2 py-1 bg-indigo-600 text-[8px] font-black text-white rounded-md uppercase tracking-tighter">ATIVO</span>
               </div>
-              <p className="text-[11px] text-slate-500 leading-relaxed">
-                {t.plano.proText}
-              </p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">{t.plano.proText}</p>
               <ul className="space-y-2">
-                {t.plano.features.map((item, i) => (
-                  <li key={i} className="flex items-center text-[10px] text-slate-600">
-                    <Zap className="w-3 h-3 text-amber-500 mr-2 shrink-0" />
-                    {item}
+                {t.plano.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <Check className="w-3 h-3 text-indigo-500" /> {feature}
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold h-9">
-                {t.plano.upgrade}
-              </Button>
             </div>
           </section>
 

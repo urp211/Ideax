@@ -28,19 +28,20 @@ export const translations = {
     },
     status: "Oportunidades Disponíveis",
     usageCount: "Ideias restantes hoje: {count}",
+    successRate: "Estatísticas de Sucesso",
     about: {
       title: "Sobre o App",
       purpose: "Finalidade",
-      purposeText: "O Ideax Pro é um motor de geração de negócios via IA, treinado para encontrar oportunidades reais com baixo capital.",
+      purposeText: "O Ideax Pro é um motor de geração de negócios via IA gratuita, treinado para encontrar oportunidades reais com baixo capital.",
       version: "Versão",
       dev: "Desenvolvedor",
     },
     plano: {
-      title: "Assinatura",
-      actual: "Plano Atual",
-      proText: "No plano PRO você tem:",
-      features: ["Ideias ilimitadas", "Exportação HD", "Análise de ROI", "Suporte 24/7"],
-      upgrade: "Mudar para o PRO"
+      title: "Perfil de Acesso",
+      actual: "Acesso Gratuito à IA",
+      proText: "Seu acesso atual inclui:",
+      features: ["Ideias personalizadas", "Exportação Grátis", "Análise de Sucesso", "IA de última geração"],
+      upgrade: "Ver Recursos"
     }
   },
   en: {
@@ -69,19 +70,20 @@ export const translations = {
     },
     status: "Opportunities Available",
     usageCount: "Remaining ideas today: {count}",
+    successRate: "Success Statistics",
     about: {
       title: "About",
       purpose: "Purpose",
-      purposeText: "Ideax Pro is an AI business engine trained to find real opportunities with low capital.",
+      purposeText: "Ideax Pro is a free AI business engine trained to find real opportunities with low capital.",
       version: "Version",
       dev: "Developer",
     },
     plano: {
-      title: "Subscription",
-      actual: "Current Plan",
-      proText: "In the PRO plan you get:",
-      features: ["Unlimited ideas", "HD Export", "ROI Analysis", "24/7 Support"],
-      upgrade: "Upgrade to PRO"
+      title: "Access Profile",
+      actual: "Free AI Access",
+      proText: "Your current access includes:",
+      features: ["Custom ideas", "Free Export", "Success Analysis", "State-of-the-art AI"],
+      upgrade: "View Features"
     }
   },
   es: {
